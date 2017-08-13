@@ -40,3 +40,5 @@ Feature: The program has a main GUI page for the subroutines
     When the user selects a file from the inbox
     And the user clicks once on the folder
     Then the file is transferred to that location
+
+
