@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+build
+.DS_Store
+.idea
+.gradle
+gradle
+src/.DS_Store
+src/main/.DS_Store
+
+.idea/inspectionProfiles/
+src/main/resources/layouts/
