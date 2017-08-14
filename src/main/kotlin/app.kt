@@ -7,6 +7,7 @@ import views.MainView
 
 class ChartApp : App() {
     override val primaryView = MainView::class
+
 }
 
 fun main(args: Array<String>) {
