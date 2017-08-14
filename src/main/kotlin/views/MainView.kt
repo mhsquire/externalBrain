@@ -1,7 +1,6 @@
 package views
 
 import javafx.event.ActionEvent
-import javafx.scene.control.MenuItem
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.VBox
 import tornadofx.*
@@ -30,9 +29,9 @@ class MainView : View("External Brain") {
     }
 
     fun handleModeMenuAction(e: ActionEvent) {
-
+        System.out.println(e.source)
         when(e.source) {
-            MenuItem by fxid("viewer_menuitem_id") -> modeSelectors = "layouts/tagging_selectors.fxml"
+            "tagging_menuitem_id" -> modeSelectors = "layouts/tagging_selectors.fxml"
             else -> modeSelectors = "layouts/view_selectors.fxml"
         }
 
@@ -43,4 +42,5 @@ class MainView : View("External Brain") {
         modeSelectors = "/layouts/sorting_selectors.fxml"
         selectorsPane.addChildIfPossible(selectorPane)
     }
+
 }
