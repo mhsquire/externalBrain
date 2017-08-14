@@ -7,6 +7,7 @@ Feature: The program makes a queue of the files on the system by location or by 
 
   Scenario:
     When the user tags a file
+    And hits the apply button
     Then the file is tagged in TMSU with the timecode of when it was last seen
 
   Scenario:

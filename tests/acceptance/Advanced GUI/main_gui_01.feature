@@ -1,10 +1,10 @@
-Feature: The program has a main GUI page for the subroutines
+Feature: The program has a main GUI page for access to the other scenes
   Description: The main GUI page that opens the other features
 
-  Background: Given that the program is running
+  Background:
+    Given that the program is running
 
   Scenario:
-    When the user intiates the file program
     Then they are presented with the main menu
 
   Scenario:

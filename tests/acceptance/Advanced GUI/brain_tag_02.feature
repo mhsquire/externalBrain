@@ -8,5 +8,5 @@ Feature: program flashes the top file from the queue
 
 
   Scenario:
-      Then fills the GUI with the proposed tags
+      Then the program fills the GUI with the proposed tags
 

@@ -1,9 +1,10 @@
 Feature: The program finds duplicate tag combinations and asks for additional clarifying tag
-  Description: The program finds duplicate tag combinations and asks for additional clarifying tag. The clarifying tag
-  is accepted and the dup goes to a done list. The changes are then accepted.
+  Description: The program finds duplicate tag combinations and asks for additional clarifying tag so that integration
+  can take place. The clarifying tag is accepted and the dup goes to a done list. The changes are then accepted.
 
   Background:
     Given there are files that are tagged
+    Given that the user has created a collection of files
 
   Scenario:
     Given there is at least one tag combination
@@ -19,5 +20,5 @@ Feature: The program finds duplicate tag combinations and asks for additional cl
     Then the program displays the files associated with that query
 
   Scenario:
-    When the user enters the brain search mode using that query
-    Then the user can use brain search mode to modify the files
+    When the user enters the brain tag mode using that query
+    Then the user can use brain tag mode to modify the files

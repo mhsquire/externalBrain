@@ -1,7 +1,7 @@
 package app
 
 import javafx.application.Application
-import tornadofx.App
+import tornadofx.*
 import views.MainView
 
 
