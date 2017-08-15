@@ -3,7 +3,7 @@ package models
 import java.io.File
 
 /**
- * Created by msquir201 on 8/14/17.
+ * Created by Matthew Squire on 8/14/17.
  */
 
 class LocationList () {

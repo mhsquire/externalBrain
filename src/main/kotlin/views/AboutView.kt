@@ -5,7 +5,7 @@ import javafx.scene.layout.AnchorPane
 import tornadofx.*
 
 /**
- * Created by msquir201 on 8/12/17.
+ * Created by Matthew Squire on 8/12/17.
  */
 class AboutView : View("About") {
 

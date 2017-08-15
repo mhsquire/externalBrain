@@ -11,13 +11,16 @@ import javafx.stage.Stage
 import tornadofx.*
 import java.util.logging.Logger
 import javafx.scene.Parent
+import javafx.scene.control.ListView
 import javafx.scene.control.TextField
+import javafx.scene.layout.AnchorPane
+import java.io.File
 import java.util.ArrayList
 
 
 
 /**
- * Created by msquir201 on 8/12/17.
+ * Created by Matthew Squire on 8/12/17.
  */
 
 
@@ -30,6 +33,7 @@ class MainView : View("External Brain") {
     override val root: VBox by fxml("/layouts/main.fxml")
     var mainController: MainController
     val selectorsStack: StackPane by fxid("SelectorsStack")
+    val listViewStack: AnchorPane by fxid("ListViewStack")
     val detailsStack: StackPane by fxid("DetailsStack")
     val viewMenuItem: MenuItem by fxid("viewer_menuitem_id")
     val taggingMenuItem: MenuItem by fxid("tagging_menuitem_id")
@@ -81,17 +85,25 @@ class MainView : View("External Brain") {
         }
     }
 
-    fun handleAddDirLocationEvent(e: ActionEvent) {
-        mainController.showFilesChooserForLocationSearch()
-        var fileBox: TextField = TextField()
-        val selectorsStackNodeList: ArrayList<Node> = getAllNodes(selectorsStack)
-        for(child in selectorsStackNodeList) {
-            if(child.id == "filefield_textbox_id") {
-                fileBox = child as TextField
-                break
-            }
-        }
-        fileBox.appendText(mainController.fileBox.path)
+    fun handleApplyButtonEvent(e: ActionEvent) {
+        val fileCollection = getNodeById(listViewStack, "main_listview_id") as ListView<*>
+        mainController.populateCollection()
+        fileCollection.items = mainController.fileCollection
+    }
+
+    fun handleAddDirectoryEvent(e: ActionEvent) {
+        val fileBox: TextField = getNodeById(selectorsStack, "filefield_textbox_id") as TextField
+        mainController.addDirectory(fileBox)
+        val fileList = getNodeById(selectorsStack, "directory_listview_id") as ListView<*>
+        fileList.items = mainController.fileList
+        fileBox.deleteText(0, fileBox.text.length)
+    }
+
+    fun handleRemoveDirectoryEvent(e: ActionEvent) {
+        val fileList = getNodeById(selectorsStack, "directory_listview_id") as ListView<*>
+        mainController.fileList
+                .filter { fileList.selectedItem == it }
+                .forEach { mainController.fileList.remove(it) }
     }
 
     /**
@@ -99,6 +111,18 @@ class MainView : View("External Brain") {
      */
     fun handleAboutMenuAction() {
         replaceWith(AboutView::class)
+    }
+
+    fun getNodeById(root: Parent, id: String): Node {
+        val selectorsStackNodeList: ArrayList<Node> = getAllNodes(root)
+        var node: Node = selectorsStackNodeList.get(0)
+        for(child in selectorsStackNodeList) {
+            if(child.id == id) {
+                node = child
+                break
+            }
+        }
+        return node
     }
 
     fun getAllNodes(root: Parent): ArrayList<Node> {
