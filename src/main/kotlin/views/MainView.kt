@@ -12,9 +12,13 @@ import tornadofx.*
 import java.util.logging.Logger
 import javafx.scene.Parent
 import javafx.scene.control.ListView
+import javafx.scene.control.RadioButton
 import javafx.scene.control.TextField
 import javafx.scene.layout.AnchorPane
-import java.io.File
+import javafx.scene.paint.Color
+import javafx.scene.paint.Paint
+import javafx.scene.shape.Box
+import models.FileDir
 import java.util.ArrayList
 
 
@@ -38,14 +42,17 @@ class MainView : View("External Brain") {
     val viewMenuItem: MenuItem by fxid("viewer_menuitem_id")
     val taggingMenuItem: MenuItem by fxid("tagging_menuitem_id")
     val sortingMenuItem: MenuItem by fxid("sorting_menuitem_id")
+    val includeRadioButton: RadioButton by fxid("include_radiobutton_id")
+    val excludeRadioButton: RadioButton by fxid("exclude_radiobutton_id")
 
     init {
         setTopStackPaneTo("ViewSelectorsPane", selectorsStack)
         setTopStackPaneTo("ViewDetailsPane", detailsStack)
         mainController = MainController(currentStage as Stage)
+        includeRadioButton.isSelected = true
     }
 
-    fun handleDirectory(){
+    fun handleMainListViewClick() {
 
     }
 
@@ -85,6 +92,22 @@ class MainView : View("External Brain") {
         }
     }
 
+    fun handleIncludeRadioButtonEvent(e: ActionEvent) {
+        when(e.source) {
+            includeRadioButton -> {
+                excludeRadioButton.isSelected = !excludeRadioButton.isSelected
+                excludeRadioButton.isSelected = !includeRadioButton.isSelected
+                mainController.inclusiveDirItem = includeRadioButton.isSelected
+            }
+            excludeRadioButton -> {
+                includeRadioButton.isSelected = !includeRadioButton.isSelected
+                includeRadioButton.isSelected = !excludeRadioButton.isSelected
+                mainController.inclusiveDirItem = includeRadioButton.isSelected
+            }
+        }
+        LOG.finer("Inclusiveness is: " + mainController.inclusiveDirItem)
+    }
+
     fun handleApplyButtonEvent(e: ActionEvent) {
         val fileCollection = getNodeById(listViewStack, "main_listview_id") as ListView<*>
         mainController.populateCollection()
@@ -94,8 +117,23 @@ class MainView : View("External Brain") {
     fun handleAddDirectoryEvent(e: ActionEvent) {
         val fileBox: TextField = getNodeById(selectorsStack, "filefield_textbox_id") as TextField
         mainController.addDirectory(fileBox)
-        val fileList = getNodeById(selectorsStack, "directory_listview_id") as ListView<*>
+        val fileList = getNodeById(selectorsStack, "directory_listview_id") as ListView<FileDir>
         fileList.items = mainController.fileList
+
+        fileList.cellFormat {
+            graphic = cache {
+                form {
+                    fieldset {
+                        label(it.file.path) {
+                            style {
+                                borderColor += box(Paint.valueOf(it.color))
+                                borderInsets += box(3.px)
+                            }
+                        }
+                    }
+                }
+            }
+        }
         fileBox.deleteText(0, fileBox.text.length)
     }
 
