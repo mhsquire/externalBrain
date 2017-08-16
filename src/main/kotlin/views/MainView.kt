@@ -4,23 +4,18 @@ import controllers.MainController
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.scene.Node
-import javafx.scene.control.MenuItem
 import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import tornadofx.*
 import java.util.logging.Logger
 import javafx.scene.Parent
-import javafx.scene.control.ListView
-import javafx.scene.control.RadioButton
-import javafx.scene.control.TextField
+import javafx.scene.control.*
 import javafx.scene.layout.AnchorPane
-import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
-import javafx.scene.shape.Box
 import models.FileDir
 import java.util.ArrayList
-
+import javafx.event.Event
 
 
 /**
@@ -52,8 +47,8 @@ class MainView : View("External Brain") {
         includeRadioButton.isSelected = true
     }
 
-    fun handleMainListViewClick() {
-
+    fun handleMainListViewClick(e: Event) {
+        mainController.findMainListItem(e.toString())
     }
 
     fun handleModeMenuAction(e: ActionEvent) {

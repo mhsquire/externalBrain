@@ -1,6 +1,4 @@
-/**
- * Created by Matthew Squire on 8/12/17.
- */
+
 package controllers
 
 import javafx.collections.FXCollections
@@ -13,6 +11,10 @@ import tornadofx.*
 import java.io.File
 import java.util.logging.Logger
 
+
+/**
+ * Created by Matthew Squire on 8/12/17.
+ */
 
 class MainController(val stage: Stage): Controller() {
 
@@ -88,6 +90,10 @@ class MainController(val stage: Stage): Controller() {
             return
         }
         addFileToListFromBox()
+    }
+
+    fun findMainListItem(text: String) {
+        System.out.println(text)
     }
 
 }

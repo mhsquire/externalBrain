@@ -17,7 +17,7 @@ import java.nio.file.attribute.PosixFileAttributes
 class FileDir(val file: File, val inclusive: Boolean) {
 
     val color: String =  if (inclusive) "#ffffff" else "#a94442"
-    val path: Path = file.toPath()
+    val path = file.toPath()
     val attr = Files.readAttributes(path, BasicFileAttributes::class.java)
 
     override fun toString(): String {
