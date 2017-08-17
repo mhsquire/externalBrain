@@ -48,7 +48,7 @@ class MainView : View("External Brain") {
     }
 
     fun handleMainListViewClick(e: Event) {
-        mainController.findMainListItem(e.toString())
+       // mainController.findMainListItem(e.target.tagProperty.getProperty(text))
     }
 
     fun handleModeMenuAction(e: ActionEvent) {

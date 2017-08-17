@@ -1,6 +1,7 @@
 
 package controllers
 
+import javafx.beans.property.Property
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.scene.control.TextField
@@ -92,7 +93,7 @@ class MainController(val stage: Stage): Controller() {
         addFileToListFromBox()
     }
 
-    fun findMainListItem(text: String) {
+    fun findMainListItem(text: Property<Any?>) {
         System.out.println(text)
     }
 
