@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Tag">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Collection">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Mode">
+               <items>
+                  <MenuItem fx:id="viewer_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Viewer" />
+                  <MenuItem fx:id="tagging_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Tagging Tool" />
+                  <MenuItem fx:id="sorting_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Sorting Tool" />
+                  <MenuItem fx:id="duplicate_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Duplicate Tool" />
+                  <MenuItem fx:id="memory_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Memory Tool" />
+                  <MenuItem fx:id="archive_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Archive Tool" />
+                  <MenuItem fx:id="revert_menuitem_id" mnemonicParsing="false" onAction="#handleModeMenuAction" text="Revert Tool" />
+               </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem fx:id="aboutMenu01" mnemonicParsing="false" onAction="#handleAboutMenuAction" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <items>
+            <StackPane fx:id="SelectorsStack" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane fx:id="ViewSelectorsPane">
+                     <children>
+                        <TabPane prefHeight="549.0" prefWidth="229.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Location">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="filefield_textbox_id" layoutX="10.0" layoutY="347.0" maxWidth="206.0" prefHeight="27.0" prefWidth="206.0" />
+                                          <ScrollPane layoutX="-2.0" layoutY="11.0" prefHeight="283.0" prefWidth="231.0">
+                                             <content>
+                                                <ListView fx:id="directory_listview_id" prefHeight="284.0" prefWidth="200.0" />
+                                             </content>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </ScrollPane>
+                                          <RadioButton fx:id="include_radiobutton_id" layoutX="10.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleIncludeRadioButtonEvent" text="Include" />
+                                          <RadioButton fx:id="exclude_radiobutton_id" layoutX="100.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleIncludeRadioButtonEvent" text="Exclude" />
+                                          <Button fx:id="add_dir_button_id" layoutX="15.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleAddDirectoryEvent" text="Add" />
+                                          <Button layoutX="164.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleApplyButtonEvent" text="Apply" />
+                                          <Button layoutX="79.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleRemoveDirectoryEvent" text="Remove" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Query">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="10.0" layoutY="300.0" />
+                                          <ScrollPane prefHeight="283.0" prefWidth="231.0">
+                                             <content>
+                                                <ListView prefWidth="200.0" />
+                                             </content>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </ScrollPane>
+                                          <Button layoutX="157.0" layoutY="397.0" mnemonicParsing="false" text="Add" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              <AnchorPane fx:id="TaggingSelectorsPane" visible="false">
+                     <children>
+                        <Label text="Tagging" />
+                     </children>
+              </AnchorPane>
+                  <AnchorPane fx:id="SortingSelectorsPane" visible="false">
+                     <children>
+                        <Label text="Sorting" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
+        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+          <content>
+            <AnchorPane id="Content" fx:id="ListViewStack" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                     <children>
+                        <ListView fx:id="main_listview_id" layoutX="-1.0" layoutY="1.0" onMouseReleased="#handleMainListViewClick" prefHeight="544.0" prefWidth="435.0" />
+                     </children></AnchorPane>
+          </content>
+        </ScrollPane>
+            <StackPane fx:id="DetailsStack" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane fx:id="ViewDetailsPane" visible="false">
+                     <children>
+                        <Label text="View" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="TaggingDetailsPane" visible="false">
+                     <children>
+                        <Label text="Tagging" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="SortingDetailsPane" visible="false">
+                     <children>
+                        <Label text="Sorting" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
+      </items>
+    </SplitPane>
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>
