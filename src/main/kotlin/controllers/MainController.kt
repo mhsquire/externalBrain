@@ -1,7 +1,6 @@
 
 package controllers
 
-import javafx.beans.property.Property
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.scene.control.TextField
@@ -11,6 +10,9 @@ import models.FileDir
 import tornadofx.*
 import java.io.File
 import java.util.logging.Logger
+import java.nio.file.attribute.BasicFileAttributes
+import java.nio.file.Files
+import java.nio.file.attribute.FileTime
 
 
 /**
@@ -93,8 +95,29 @@ class MainController(val stage: Stage): Controller() {
         addFileToListFromBox()
     }
 
-    fun findMainListItem(text: Property<Any?>) {
-        System.out.println(text)
+    fun findMainListItem(file: File)  {
+        val map: HashMap<String, Any> = populateDetails(file)
     }
+
+    private fun populateDetails(file: File): HashMap<String, Any> {
+        val map: HashMap<String, Any> = fileAttributes(file)
+        map.put("isDir", file.isDirectory)
+        map.put("isHidden", file.isHidden)
+        map.put("name", file.name)
+        map.put("totalSpace", file.totalSpace)
+        return map
+    }
+
+    private fun fileAttributes(file: File): HashMap<String, Any> {
+        val map: HashMap<String, Any> = HashMap()
+        val attr = Files.readAttributes<BasicFileAttributes>(file.toPath(), BasicFileAttributes::class.java)
+        map.put("lastModified", attr.lastModifiedTime())
+        map.put("creationTime", attr.creationTime())
+        map.put("lastAccessed", attr.lastAccessTime())
+        map.put("isSymLink", attr.isSymbolicLink)
+        map.put("size", attr.size())
+        return map
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package views
 
 import controllers.MainController
+import javafx.beans.value.ChangeListener
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.scene.Node
@@ -16,6 +17,9 @@ import javafx.scene.paint.Paint
 import models.FileDir
 import java.util.ArrayList
 import javafx.event.Event
+import javafx.scene.text.Text
+import javafx.beans.value.ObservableValue
+import java.io.File
 
 
 /**
@@ -48,7 +52,9 @@ class MainView : View("External Brain") {
     }
 
     fun handleMainListViewClick(e: Event) {
-       // mainController.findMainListItem(e.target.tagProperty.getProperty(text))
+        val listView: ListView<File> = e.source as ListView<File>
+        val file: File = listView.selectionModel.selectedItem
+
     }
 
     fun handleModeMenuAction(e: ActionEvent) {
@@ -104,7 +110,7 @@ class MainView : View("External Brain") {
     }
 
     fun handleApplyButtonEvent(e: ActionEvent) {
-        val fileCollection = getNodeById(listViewStack, "main_listview_id") as ListView<*>
+        val fileCollection = getNodeById(listViewStack, "main_listview_id") as ListView<File>
         mainController.populateCollection()
         fileCollection.items = mainController.fileCollection
     }
