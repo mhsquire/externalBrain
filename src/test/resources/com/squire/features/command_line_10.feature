@@ -26,14 +26,14 @@ Feature: The associate program allows the user to enter a dup tag mode when goin
     Then only files with <criteria> are returned
 
     Examples:
-      | criteria
-      | tag
-      | type
-      | hash
-      | date
-      | name
-      | location
-      | size
+      | criteria |
+      | tag      |
+      | type     |
+      | hash     |
+      | date     |
+      | name     |
+      | location |
+      | size     |
 
   Scenario:
     When the user enters a collection of files from the list in comma delimited format

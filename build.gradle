@@ -3,7 +3,7 @@ version '0.0.1-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.2.21'
-    
+
     repositories {
         mavenCentral()
     }
@@ -22,9 +22,12 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile 'no.tornado:tornadofx:1.7.14'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
     testCompile 'info.cukes:cucumber-java:1.2.5'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
     testCompile 'junit:junit:4.12'
+
 }
 
 compileKotlin {

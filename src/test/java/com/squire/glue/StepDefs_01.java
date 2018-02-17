@@ -1,13 +1,13 @@
+package com.squire.glue;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.NoSuchFileException;
 
 /**
  * Created by Matthew Squire on 8/15/17.
@@ -15,21 +15,23 @@ import java.nio.file.Path;
 
 
 public class StepDefs_01 {
+
+
     @cucumber.api.java.en.Given("^there are files to test$")
     public void thereAreFilesToTest() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        String source = "/Users/msquir201/IdeaProjects/TestingGround/files/";
-        String target = "/Users/msquir201/IdeaProjects/TestingGround/testground/";
-        String[] args = {source, target};
+
+        File source = new File("TestingGround/files/");
+        File target = new File("TestingGround/testground/");
+
+        File[] args = {source, target};
         deleteFiles(args);
         copyFiles(args);
-        File file = new File(target);
+        File file = new File(target.toPath().toString());
         assert (file.isDirectory());
         assert (file.list().length>0);
-        // throw new cucumber.api.PendingException();
     }
 
-    private void deleteFiles(String[] args) {
+    private void deleteFiles(File[] args) {
         try {
             new FileDeleter(args);
         } catch (IOException e) {
@@ -37,7 +39,7 @@ public class StepDefs_01 {
         }
     }
 
-    private void copyFiles(String[] args) {
+    private void copyFiles(File[] args) {
         try {
             new FileCopier(args);
         } catch (IOException e) {

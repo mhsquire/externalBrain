@@ -1,14 +1,22 @@
+package com.squire.glue;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 /**
- * Created by msquir201 on 8/15/17.
+ * Created by Matthew Squire on 8/15/17.
  */
 public class FileDeleter {
 
-    FileDeleter(String[] args) throws IOException {
-        Path dirToDel = Paths.get(args[1]);
+
+    public FileDeleter(File[] args) throws IOException {
+
+        // @TODO I don't like the way I selected this.
+        // @Todo I don't like the way this isn't integrated into a file manager class.
+        // @Todo this fails when there is no directory.
+        Path dirToDel = args[1].toPath();
         Files.walkFileTree(dirToDel, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {

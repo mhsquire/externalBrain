@@ -1,17 +1,20 @@
+package com.squire.glue;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.EnumSet;
 
 /**
- * Created by msquir201 on 8/15/17.
+ * Created by Matthew Squire on 8/15/17.
  */
 public class FileCopier {
 
+   public FileCopier(File[] args) throws IOException {
+        final Path sourceDir = args[1].toPath();
+        final Path targetDir = args[1].toPath();
 
-    FileCopier(String[] args) throws IOException {
-        final Path sourceDir = Paths.get(args[0]);
-        final Path targetDir = Paths.get(args[1]);
         Files.walkFileTree(sourceDir, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE,
             new SimpleFileVisitor<Path>() {
                 @Override
