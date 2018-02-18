@@ -7,20 +7,24 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.NoSuchFileException;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Created by Matthew Squire on 8/15/17.
  */
 
 
 public class StepDefs_01 {
-
+    private static final Logger log = LogManager.getLogger("StepDefs_01");
 
     @cucumber.api.java.en.Given("^there are files to test$")
     public void thereAreFilesToTest() throws Throwable {
 
         File source = new File("TestingGround/files/");
+        log.info("Test info");
+        log.debug("Test debug");
+        log.warn("Test warning");
+        log.error("Test error");
         File target = new File("TestingGround/testground/");
 
         File[] args = {source, target};
