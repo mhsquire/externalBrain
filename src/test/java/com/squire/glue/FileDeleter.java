@@ -15,12 +15,10 @@ public class FileDeleter {
     private static final Logger log = LogManager.getLogger("FileDeleter");
 
 
-    public FileDeleter(File[] args) throws IOException {
+    public FileDeleter(File target) throws IOException {
 
-        // @TODO I don't like the way I selected this.
         // @Todo I don't like the way this isn't integrated into a file manager class.
-        // @Todo this fails when there is no directory.
-        Path dirToDel = args[1].toPath();
+        Path dirToDel = target.toPath();
         if (!Files.exists(dirToDel)) {
             log.debug("Directory " + dirToDel + " selected for deletion does not exist.");
             return;

@@ -7,6 +7,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 /**
@@ -24,14 +26,14 @@ public class StepDefs_01 {
         File target = new File("TestingGround/testground/");
 
         File[] args = {source, target};
-        deleteFiles(args);
+        deleteFiles(target);
         copyFiles(args);
         File file = new File(target.toPath().toString());
         assert (file.isDirectory());
-        assert (file.list().length>0);
+        assert (Objects.requireNonNull(file.list()).length>0);
     }
 
-    private void deleteFiles(File[] args) {
+    private void deleteFiles(File args) {
         try {
             new FileDeleter(args);
         } catch (IOException e) {
