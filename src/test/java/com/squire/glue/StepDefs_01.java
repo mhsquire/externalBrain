@@ -21,10 +21,6 @@ public class StepDefs_01 {
     public void thereAreFilesToTest() throws Throwable {
 
         File source = new File("TestingGround/files/");
-        log.info("Test info");
-        log.debug("Test debug");
-        log.warn("Test warning");
-        log.error("Test error");
         File target = new File("TestingGround/testground/");
 
         File[] args = {source, target};
