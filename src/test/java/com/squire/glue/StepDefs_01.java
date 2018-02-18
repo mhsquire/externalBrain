@@ -24,26 +24,25 @@ public class StepDefs_01 {
 
         File source = new File("TestingGround/files/");
         File target = new File("TestingGround/testground/");
-
-        File[] args = {source, target};
+        
         deleteFiles(target);
-        copyFiles(args);
+        copyFiles(source, target);
         File file = new File(target.toPath().toString());
         assert (file.isDirectory());
         assert (Objects.requireNonNull(file.list()).length>0);
     }
 
-    private void deleteFiles(File args) {
+    private void deleteFiles(File target) {
         try {
-            new FileDeleter(args);
+            new FileDeleter(target);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void copyFiles(File[] args) {
+    private void copyFiles(File source, File target) {
         try {
-            new FileCopier(args);
+            new FileCopier(source, target);
         } catch (IOException e) {
             e.printStackTrace();
         }
