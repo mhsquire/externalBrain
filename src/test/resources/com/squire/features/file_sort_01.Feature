@@ -4,11 +4,12 @@ Feature: The program can sort tagged files into groups
 
     Background:
       Given there are files to test
+      And there is a fresh tmsu database with files
       And there are files with tags
 
     Scenario:
       When when the user opens the sort window
-      Then he user can choose a number of tags tag
+      Then the user can choose a number of tags tag
 
     Scenario:
       When the user chooses any number of tags

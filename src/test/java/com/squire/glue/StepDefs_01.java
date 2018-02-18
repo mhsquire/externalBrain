@@ -48,6 +48,21 @@ public class StepDefs_01 {
         }
     }
 
+    @And("^there is a fresh tmsu database with files$")
+    public void thereIsAFreshTmsuDatabaseWithFiles() throws Throwable {
+        // assert there are files in testing ground
+        // if database exists tear it down
+        // stand up a new database with files
+    }
+
+    @And("^there are files with tags$")
+    public void thereAreFilesWithTags() throws Throwable {
+        // assert that there is a database with files and no tags
+        // if tags exist delete them
+        // tag the files
+        throw new PendingException();
+    }
+
     @When("^the user types in a location into the textfield$")
     public void theUserTypesInALocationIntoTheTextfield() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
@@ -113,4 +128,5 @@ public class StepDefs_01 {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
 }
