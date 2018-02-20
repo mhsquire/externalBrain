@@ -15,14 +15,15 @@ The problem with the old program was that it was heavily dependent on TMSU. This
 
 ###New Ideas
 * Database pruning – program detects when files have been deleted and updates lists automatically.
-
 ###API Version 1.0 MVP
 * File Sort – Files would further be sorted into easy to remember / look through directories.
-* Directory manager – Manages the sorted directories that random files are sorted into.
-* GUI – Point and click interface for control of advanced options
+    * File manager – Manages the sorted directories that random files are sorted into.
+    * Cache for file data between sessions.
+* GUI for File sort – Simple Point and click interface for control of the simple process of sending files to their easy directories.
+    * Drag and drop to Easy folders.
 
 ###API Version 2.0 Data Base
-* Notes Data – Notes could be saved and memorized about each file
+* Notes DataBase – Notes could be saved and memorized about each file
 * Brain Search – Spaced repetition to memorize organized files.
 * Database pruning – program detects when files have been deleted and updates lists automatically.
 
