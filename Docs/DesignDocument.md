@@ -5,10 +5,8 @@ The problem with the old program was that it was heavily dependent on TMSU. This
 ###API Version 1.0 MVP
 * File Sort – Files would further be sorted into easy to remember / visual based directories.
     * File sort command that initiates the sort of the files.
-    * Add file to directory pre-execution
-    * Add directory to file structure pre-execution
-    * Remove file from directory
-    * Remove entire directory from pre-execution
+    * Add / remove file to directory pre-execution
+    * Add / remove directory to file structure pre-execution
 * GUI for File sort – Simple Point and click interface for control of the simple process of sending files to their easy directories.
     * Drag and drop to Easy folders.
         * Select file icon

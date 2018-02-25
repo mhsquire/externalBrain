@@ -9,6 +9,7 @@ Feature: The program can sort the files based on date
       When the user chooses the sort window
       Then the user can sort the files found by date
 
+
 #    Scenario:
 #      When the user sorts the files found by date
 #      Then the user can tag the files
