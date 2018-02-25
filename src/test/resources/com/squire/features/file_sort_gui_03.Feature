@@ -9,10 +9,10 @@ Feature: The program can sort files based on type
     When the user clicks on the sort window
     Then the user can sort the files found by type
 
-  Scenario:
-    When the user clicks on the sort window
-    Then the user can choose any number of tags
-
-  Scenario:
-    When the user chooses any number of tags
-    Then the user can sort the results by type
+#  Scenario:
+#    When the user clicks on the sort window
+#    Then the user can choose any number of tags
+#
+#  Scenario:
+#    When the user chooses any number of tags
+#    Then the user can sort the results by type

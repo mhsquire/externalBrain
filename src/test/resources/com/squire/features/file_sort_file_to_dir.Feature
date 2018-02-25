@@ -1,0 +1,1 @@
+Feature: the program has a class that is used to create a list of files to be moved or copied into a target directory.

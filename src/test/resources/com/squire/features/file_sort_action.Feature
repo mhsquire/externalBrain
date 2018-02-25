@@ -1,0 +1,1 @@
+Feature: The program executes the file sort after the user presses a button on the UI to make the sort official.

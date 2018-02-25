@@ -7,17 +7,17 @@ Feature: The program has a main GUI page for access to the other scenes
   Scenario:
     Then they are presented with the main menu
 
-  Scenario:
-    When the user clicks on the process duplicates section of the main menu
-    Then the duplicates processing screen opens with several options
+#  Scenario:
+#    When the user clicks on the process duplicates section of the main menu
+#    Then the duplicates processing screen opens with several options
 
-  Scenario:
-    When the user clicks on the tags section of the main menu
-    Then the tags section window opens
+#  Scenario:
+#    When the user clicks on the tags section of the main menu
+#    Then the tags section window opens
 
-  Scenario:
-    When the user clicks on the janki search section of the main menu
-    Then the janki search section menu opens with menu options
+#  Scenario:
+#    When the user clicks on the janki search section of the main menu
+#    Then the janki search section menu opens with menu options
 
   Scenario:
     When the user clicks on the file sort section of the main menu
